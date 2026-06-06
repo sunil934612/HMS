@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-       "ENGINE": "django.db.backends.mysql",
-        "NAME": "mydatabase2",
-        "USER": "root",
-        "PASSWORD": "sunil",
-        "HOST": "127.0.0.1",
-        "PORT": "3308",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysql',  # or Railway MYSQLDATABASE
+        'USER': 'root',   # or Railway MYSQLUSER
+        'PASSWORD': 'sunil',  # better: Railway MYSQLPASSWORD
+        'HOST': 'acela.proxy.rlwy.net',
+        'PORT': '48547',
     }
 }
 
