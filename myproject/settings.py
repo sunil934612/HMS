@@ -86,6 +86,9 @@ DATABASES = {
         'PASSWORD': 'VqdaVHZbMSXpzrYCBKsKPyXzSKFfHemu',
         'HOST': 'acela.proxy.rlwy.net',
         'PORT': '48547',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        }
     }
 }
 
