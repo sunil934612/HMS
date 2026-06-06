@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="content container-fluid">
+
+    <div class="page-header">
+    <div class="row align-items-center">
+    <div class="col">
+    <h3 class="page-title">Appointments</h3>
+    <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+    <li class="breadcrumb-item active">View Appointment</li>
+    </ul>
+    </div>
+   <form method="get" action="{% url 'details' %}" class="mb-3">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Search appointments..." class="form-control" style="width: 300px; display: inline-block;">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+    
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="card card-table">
+    <div class="card-body">
+        
+          </div>
+    
+    <div class="table-responsive">
+        {% if appointments %}
+
+    <table class="table table-hover table-center mb-0 datatable">
+    <thead>
+    <tr>
+   
+    <th>Appointment ID</th>
+    <th>Doctor Name</th>
+    <th>Name</th>
+    <th>Date of Appointment</th>
+    <th>Time of Appointment</th>
+    <!-- <th>Creation Date</th> -->
+    <th>Status</th>
+    <th>Action</th>
+    <!-- <th class="text-right">Action</th> -->
+    </tr>
+    </thead>
+    <tbody>
+        {% for i in appointments %}
+    <tr>
+
+    <td>{{i.id}}</td>
+    <td>{{i.doctor}}</td>
+        <td>{{i.name}}</td>
+
+    <td>{{i.date}}</td>
+    <td>{{i.time}}</td>
+    <td class="text-warning">{{i.status}}</td>
+    <td><a href="{% url 'delete_appointment' i.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+    <!-- <td>{{i.date}}</td> -->
+    <!-- <td>{{i.date}}</td> -->
+
+
+                                              
+   
+        <td class="text-right">
+            {% if i.status != "Canceled" %}
+                <a href="{% url 'cancel_appointment' i.id %}" class="btn btn-danger btn-sm">
+                    Cancel
+                </a>
+            {% else %}
+            {% endif %}
+        </td>
+    </tr> 
+   
+
+       {% endfor %}
+       
+
+    </tbody>
+    </table>
+
+    {% else %}
+  <p class="text-center text-danger">No Appointments Found</p>
+    {% endif %}
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

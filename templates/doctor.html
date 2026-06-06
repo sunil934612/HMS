@@ -1,0 +1,57 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block content %}
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <span class="text-white">All Doctors</span>
+            <h1 class="text-capitalize mb-5 text-lg">Specalized doctors</h1>
+
+            <ul class="list-inline breadcumb-nav">
+              <li class="list-inline-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+              <li class="list-inline-item"><span class="text-white">/</span></li>
+              <li class="list-inline-item"><a href="#" class="text-white-50">All Doctors</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+<section class="section doctors">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col-lg-12">
+        <h2>Doctors</h2>
+        <div class="divider mx-auto my-4"></div>
+        <p>Doctors count: {{ doctors|length }}</p>
+      </div>
+    </div>
+
+    <div class="row doc_sp">
+      {% for d in doctors %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"> <!-- responsive -->
+          <div class="card p-3 h-100 shadow-sm">
+            <div class="doctor-img mb-2">
+                              {% if d.profile_pic %}
+                    <img src="{{ d.profile_pic.url }}" class="img-fluid w-100 mb-2" alt="{{ d.name }}">
+                {% else %}
+          {% endif %}
+            </div>
+            <h5 class="mb-2">{{ d.name }}</h5>
+            <p>Specialization: {{ d.specialization.sname }}</p>
+            <p>Mobile Number: {{ d.mobilenumber }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Appointment End -->
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/stylesss.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side Image -->
+        <div class="left-side">
+            <img src="{% static 'assets/img/login.jpg' %}" alt="Login Image">
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="right-side">
+            <form class="login-form" method="post">
+                {% for messag in messages %}
+                <p class="">{{messag}}</p>
+                
+                {% endfor %}
+                
+                {% csrf_token %}
+                <h2>Login</h2>
+                <input type="text" name="username" placeholder="username"><br>
+                <input type="password" name="password" placeholder="Password" autocomplete="new-password"><br>
+                <button type="submit">Login</button>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

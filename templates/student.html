@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for message in messages %}
+    <p>{{message.message}}</p>
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" name="name" placeholder="Enter Your Name" title="text" id=""><br>
+        <label for="">Email</label>
+        <input type="email" name="email" placeholder="Enter Email" title="text" id=""><br>
+        <label for="">Contact</label>
+        <input type="number" name="contact" placeholder="Enter Number" title="text" id=""><br>
+        <label for="">Hall Ticket</label>
+        <input type="text" name="hallticket" placeholder="Enter Hall Ticket No" title="text" id=""><br>
+        <label for="">Branch</label>
+        <input type="text" name="branch" placeholder="Enter Branch" title="text" id=""><br>
+        <label for="">Year</label>
+        <input type="text" name="year" placeholder="Enter Year" title="text" id=""><br>
+        <input type="submit" >
+    </form>
+    <a href="{% url 'details' %}">Details</a>
+    
+</body>
+</html>
